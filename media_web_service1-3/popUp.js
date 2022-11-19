@@ -1,12 +1,23 @@
-"use strict";
+const newPopUp = document.createElement("div");
+const newPopUpH1 = document.createElement("h1");
+const exitButton = document.createElement("button");
 
-const titleList = document.querySelectorAll(".title");
-const popup_title = document.querySelector("#popup_title");
-console.log(popup_title);
-const popUp = (element) => {
-  const title = element;
-};
+export default function appendPopUp(title) {
+  newPopUpH1.innerText = title;
+  newPopUp.id = "popUp";
+  newPopUp.appendChild(newPopUpH1);
+  newPopUp.appendChild(createButton());
+  return newPopUp;
+}
 
-titleList.forEach((element) => {
-  element.addEventListener("click", () => popUp(element.firstChild.innerText));
-});
+function createButton() {
+  exitButton.innerText = "exit";
+  exitButton.addEventListener("click", exitPopUp);
+  return exitButton;
+}
+
+function exitPopUp() {
+  newPopUp.remove();
+  newPopUpH1.remove();
+  exitButton.remove();
+}
