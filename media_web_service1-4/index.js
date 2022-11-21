@@ -16,15 +16,10 @@ titles.forEach((element) => {
 });
 
 details.forEach((detail, index) => {
-  const data = {};
-
-  data["title"] = titles[index].firstChild.innerText;
-  data["content"] = contents[index].firstChild.textContent;
-  data["img"] = images[index].src;
-  detail.addEventListener("click", (event) => sendToDetail(event, data));
+  detail.addEventListener("click", (event) => pageChangeHandler(event, index));
 });
 
-const sendToDetail = (event, data) => {
+const pageChangeHandler = (event, index) => {
   event.preventDefault();
-  location.href = `detail.html?${JSON.stringify(data)}`;
+  location.href = `${index + 1}.html`;
 };
